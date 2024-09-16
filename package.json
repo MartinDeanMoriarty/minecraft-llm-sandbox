@@ -1,0 +1,34 @@
+{
+    "type": "module",
+    "dependencies": {
+        "@anthropic-ai/sdk": "^0.17.1",
+        "@google/generative-ai": "^0.2.1",
+        "@xenova/transformers": "github:Xenova/transformers.js",
+        "events": "^3.3.0",
+        "fs": "^0.0.1-security",
+        "fs.promises": "^0.1.2",
+        "minecraft-data": "^3.46.2",
+        "mineflayer": "^4.20.0",
+        "mineflayer-armor-manager": "^2.0.1",
+        "mineflayer-auto-eat": "^3.3.6",
+        "mineflayer-collectblock": "^1.4.1",
+        "mineflayer-pathfinder": "^2.4.5",
+        "mineflayer-pvp": "^1.3.2",
+        "moment": "^2.30.1",
+        "openai": "^4.4.0",
+        "patch-package": "^8.0.0",
+        "prismarine-item": "^1.14.0",
+        "prismarine-viewer": "^1.28.0",
+        "puppeteer": "^23.3.0",
+        "replicate": "^0.29.4",
+        "rimraf": "^6.0.1",
+        "tesseract.js": "^5.1.1",
+        "three": "^0.168.0",
+        "vec3": "^0.1.10",
+        "yargs": "^17.7.2"
+    },
+    "scripts": {
+        "postinstall": "patch-package",
+        "start": "node main.js"
+    }
+}
