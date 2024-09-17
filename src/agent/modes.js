@@ -214,7 +214,7 @@ const modes = [
     },
     {
         name: 'stayAwake',
-        description: 'Stay awake mode will trigger at a 30 minutes interval to keep the LLM awake.',
+        description: 'stayAwake mode will trigger at a 30 minutes interval to keep the LLM awake.',
         interrupts: [],
         on: true, // This mode is turned on by default.
         active: false,

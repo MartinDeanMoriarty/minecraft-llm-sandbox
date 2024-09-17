@@ -2,9 +2,12 @@
 node_modules/
 package-lock.json
 code_records/
+screenshots/
 scratch.js
 bots/**/action-code/**
 bots/**/
 keys.json
 moderator.json
 settings.js
+deu.traineddata
+eng.traineddata

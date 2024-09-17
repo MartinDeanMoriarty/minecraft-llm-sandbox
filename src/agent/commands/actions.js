@@ -2,12 +2,12 @@ import * as skills from '../library/skills.js';
 import settings from '../../../settings.js';
 import { log } from '../library/log.js';
 
-// Create a map to store the last execution time -used for takeScreenshot
+// Create a map to store the last execution time -used as spam protection for takeScreenshot
 const lastExecutionTime = new Map();
 
 // Used to exclude commands form docs
 export const excludedCommands = [
-    '!newAction', '!collectBlocks', '!collectAllBlocks','!craftRecipe', '!smeltItem', '!clearFurnace', '!placeHere','!npcGoal', '!stripMine', '!craftable'
+    '!newAction', '!collectBlocks', '!collectAllBlocks','!craftRecipe', '!smeltItem', '!clearFurnace', '!placeHere','!npcGoal', '!stripMine', '!craftable', '!goToBlock'
 ];
 export const excludeCommands = true; 
 
@@ -379,7 +379,7 @@ export const actionsList = [
     },
     {         
         name: '!takeScreenshot',
-        description: 'Takes a screenshot of the bots view. Keep idle movement in mind, you may want to stop idle_staring mode first by looking at a player or in a direction, use a command to do so.',
+        description: 'Takes a screenshot of the bots view. 30 Seconds cooldown! Keep idle movement in mind, you may want to stop idle_staring mode first by looking at a player or in a direction, use a command to do so.',
         params: {
             'screenshot_name': '(string) The name of the screenshot without any special characters or whitespaces.'
         },
