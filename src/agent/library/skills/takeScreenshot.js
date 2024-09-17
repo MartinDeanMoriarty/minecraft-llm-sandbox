@@ -40,22 +40,43 @@ export async function takeScreenshot(bot, screenshot_name) {
         // Log a message indicating that the screenshot has been taken and classification is starting
         log(bot, 'Screenshot taken. Starting classification, segmentation and text extraction...');
         
-        // Call another function to classify the screenshot using the bot and the screenshot name as parameters
-        await classifyScreenshot(bot, screenshot_name);
-        // Call another function to segment the screenshot using the bot and the screenshot name as parameters
-        await segmentScreenshot(bot, screenshot_name);
-        // Call another function to extract text(playernames) from the screenshot using the bot and the screenshot name as parameters
-        await extractText(bot, screenshot_name);      
-
-        // If everything goes well, return true indicating success
-        return true;
     } catch (error) {
         // If an error occurs during any step above, log the error message and return false
         console.error("Failed to take screenshot:", error);
         log(bot, 'Failed to take screenshot.');
         return false;
     } finally {
-        // Ensure that the browser is closed in the 'finally' block regardless of whether an error occurred or not
+        // Close the browser regardless of whether an error occurred or not
         await browser.close();
     }
+
+    // Call another function to classify the screenshot using the bot and the screenshot name as parameters
+    try {
+        await classifyScreenshot(bot, screenshot_name);
+    } catch (error) {
+        console.error("Failed to classify screenshot:", error);
+        log(bot, 'Failed to classify screenshot.');
+        return false;
+}
+
+    // Call another function to segment the screenshot using the bot and the screenshot name as parameters
+    try {
+        await segmentScreenshot(bot, screenshot_name);
+    } catch (error) {
+        console.error("Failed to segment screenshot:", error);
+        log(bot, 'Failed to segment screenshot.');
+        return false;
+    }
+
+    // Call another function to extract text(playernames) from the screenshot using the bot and the screenshot name as parameters
+    try {
+        await extractText(bot, screenshot_name);
+    } catch (error) {
+        console.error("Failed to extract text from screenshot:", error);
+        log(bot, 'Failed to extract text from screenshot.');
+        return false;
+    }
+
+    // If everything goes well, return true indicating success
+    return true;
 }
