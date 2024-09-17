@@ -1,6 +1,6 @@
 # minecraft-llm-sandbox
 
-This is a sandbox version of [kolbytn/mindcraft](https://github.com/kolbytn/mindcraft) :hugs:
+This is a sandbox version of [kolbytn/mindcraft](https://github.com/kolbytn/mindcraft) :heart: 
 
 
 # Warning! :see_no_evil: 
@@ -22,7 +22,7 @@ It's a much better version and maintained by its authors and community :heart:
 
 Should be the same as the original repo, but keep in mind, unused packets may get installed and aliens may come to earth and take your pc. I am not responsible for any damage to your pc or an alien invasion, please use this at your own risk.
 
-Again: Please go to the original repo :hugs:
+Again: Please go to the original repo :heart: 
 
 ## Limitations
 
