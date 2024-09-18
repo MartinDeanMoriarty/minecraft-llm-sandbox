@@ -6,6 +6,11 @@ import { classifyScreenshot } from './classifyScreenshot.js'; // Module to class
 import { segmentScreenshot } from './segmentScreenshot.js'; // Module to segment the screenshot
 import { extractText } from './extractText.js'; // Module to extract text from the screenshot
 
+// Helper function to generate a timestamp as the screenshot name if not provided
+function getTimestampName() {
+    return new Date().toISOString().replace(/:/g, '-').substring(0, 19) + 'z';
+}
+
 // Export an asynchronous function that takes a bot and a screenshot name as parameters
 export async function takeScreenshot(bot, screenshot_name) {
     /**
@@ -15,12 +20,11 @@ export async function takeScreenshot(bot, screenshot_name) {
      * @returns {Promise<boolean>} true if the screenshot was taken successfully, false otherwise.
      */
 
-    // Check if a screenshot name is provided; if not, log an error message and return false
-    if (!screenshot_name) {
-        log(bot, 'Failed to take screenshot. Provide a name for the screenshot');
-        return false;
-    }
+    const new_screenshot_name = screenshot_name + getTimestampName();
 
+    // Define the path where the screenshot will be saved, appending the screenshot name with '.png' extension
+    const screenshotPath = join('./screenshots/', new_screenshot_name + '.png');
+       
     // Launch a headless browser using puppeteer
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
@@ -29,10 +33,7 @@ export async function takeScreenshot(bot, screenshot_name) {
     try {
         // Navigate to the local development server's URL, wait until the network is idle for a while, and set a timeout if needed
         await page.goto(`http://localhost:3007`, { waitUntil: 'networkidle2', timeout: 1000000 });
-        
-        // Define the path where the screenshot will be saved, appending the screenshot name with '.png' extension
-        const screenshotPath = join('./screenshots/', screenshot_name + '.png');
-        
+                
         // Take a full-page screenshot and save it to the defined path
         screenshot = await page.screenshot({ path: screenshotPath, fullPage: true });
         //console.log("Screenshot taken and saved to:", screenshotPath);
@@ -52,16 +53,16 @@ export async function takeScreenshot(bot, screenshot_name) {
 
     // Call another function to classify the screenshot using the bot and the screenshot name as parameters
     try {
-        await classifyScreenshot(bot, screenshot_name);
+        await classifyScreenshot(bot, new_screenshot_name);
     } catch (error) {
         //console.error("Failed to classify screenshot:", error);
         log(bot, 'Failed to classify screenshot.');
         return false;
-}
+    }
 
     // Call another function to segment the screenshot using the bot and the screenshot name as parameters
     try {
-        await segmentScreenshot(bot, screenshot_name);
+        await segmentScreenshot(bot, new_screenshot_name);
     } catch (error) {
         //console.error("Failed to segment screenshot:", error);
         log(bot, 'Failed to segment screenshot.');
@@ -70,7 +71,7 @@ export async function takeScreenshot(bot, screenshot_name) {
 
     // Call another function to extract text(playernames) from the screenshot using the bot and the screenshot name as parameters
     try {
-        await extractText(bot, screenshot_name);
+        await extractText(bot, new_screenshot_name);
     } catch (error) {
         //console.error("Failed to extract text from screenshot:", error);
         log(bot, 'Failed to extract text from screenshot.');
