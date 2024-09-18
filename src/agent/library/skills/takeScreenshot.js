@@ -35,14 +35,14 @@ export async function takeScreenshot(bot, screenshot_name) {
         
         // Take a full-page screenshot and save it to the defined path
         screenshot = await page.screenshot({ path: screenshotPath, fullPage: true });
-        console.log("Screenshot taken and saved to:", screenshotPath);
+        //console.log("Screenshot taken and saved to:", screenshotPath);
         
         // Log a message indicating that the screenshot has been taken and classification is starting
         log(bot, 'Screenshot taken. Starting classification, segmentation and text extraction...');
         
     } catch (error) {
         // If an error occurs during any step above, log the error message and return false
-        console.error("Failed to take screenshot:", error);
+        //console.error("Failed to take screenshot:", error);
         log(bot, 'Failed to take screenshot.');
         return false;
     } finally {
@@ -54,7 +54,7 @@ export async function takeScreenshot(bot, screenshot_name) {
     try {
         await classifyScreenshot(bot, screenshot_name);
     } catch (error) {
-        console.error("Failed to classify screenshot:", error);
+        //console.error("Failed to classify screenshot:", error);
         log(bot, 'Failed to classify screenshot.');
         return false;
 }
@@ -63,7 +63,7 @@ export async function takeScreenshot(bot, screenshot_name) {
     try {
         await segmentScreenshot(bot, screenshot_name);
     } catch (error) {
-        console.error("Failed to segment screenshot:", error);
+        //console.error("Failed to segment screenshot:", error);
         log(bot, 'Failed to segment screenshot.');
         return false;
     }
@@ -72,7 +72,7 @@ export async function takeScreenshot(bot, screenshot_name) {
     try {
         await extractText(bot, screenshot_name);
     } catch (error) {
-        console.error("Failed to extract text from screenshot:", error);
+        //console.error("Failed to extract text from screenshot:", error);
         log(bot, 'Failed to extract text from screenshot.');
         return false;
     }

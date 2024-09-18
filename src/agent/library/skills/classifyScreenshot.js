@@ -32,7 +32,7 @@ export async function classifyScreenshot(bot, screenshot_name) {
             log(bot, `Classification result: ${JSON.stringify({ label: classificationResult.label, score: classificationResult.score })}`);
                         
             // Print the classification result to the console for debugging purposes
-            console.log(`Classification result: ${JSON.stringify({ label: classificationResult.label, score: classificationResult.score })}`);
+            //console.log(`Classification result: ${JSON.stringify({ label: classificationResult.label, score: classificationResult.score })}`);
             
             // Print the top K classification results to the console for debugging purposes
             // console.log(`Top ${topKResults.length} Classification Results:`, JSON.stringify(topKResults, null, 2));

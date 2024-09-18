@@ -41,9 +41,9 @@ function logFormattedOutput(bot, output) {
         const labels = output.map(item => `${item.label}: ${item.score}`);
         
         log(bot, `Segmentation result: [${labels.join(', ')}]`);
-        console.log(`Segmentation result: [${labels.join(', ')}]`);
+        //console.log(`Segmentation result: [${labels.join(', ')}]`);
     } else {
         log(bot, 'No segmentation results found.');
-        console.log('No segmentation results found.');
+        //console.log('No segmentation results found.');
     }
 }

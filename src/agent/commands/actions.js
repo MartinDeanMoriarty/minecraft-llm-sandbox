@@ -377,6 +377,16 @@ export const actionsList = [
             return await skills.lookingAt(agent.bot);
         })
     },
+    {
+        name: '!waitForIt',
+        description: 'Set a time to wait for. In seconds. Will respond with: Continue where you left of.',
+        params: {
+            'seconds_to_wait': '(num) The time to wait in seconds.'
+        },
+        perform: wrapExecution(async (agent, seconds_to_wait) => {
+            return await skills.waitForIt(agent.bot, seconds_to_wait);
+        })
+    },
     {         
         name: '!takeScreenshot',
         description: 'Takes a screenshot of the bots view. 30 Seconds cooldown! Keep idle movement in mind, you may want to stop idle_staring mode first by looking at a player or in a direction, use a command to do so.',

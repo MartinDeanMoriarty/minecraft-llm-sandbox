@@ -17,6 +17,7 @@ export * from './skills/stayAwake.js';
 export * from './skills/remindMe.js';
 export * from './skills/classifyScreenshot.js';
 export * from './skills/segmentScreenshot.js';
+export * from './skills/waitForIt.js'; 
 
 async function equipHighestAttack(bot) {
     let weapons = bot.inventory.items().filter(item => item.name.includes('sword') || (item.name.includes('axe') && !item.name.includes('pickaxe')));
