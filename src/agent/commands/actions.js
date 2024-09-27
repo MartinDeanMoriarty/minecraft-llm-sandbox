@@ -144,6 +144,19 @@ export const actionsList = [
         })
     },
     {
+        name: '!teleportToPlace',
+        description: 'Teleport to a saved location.',
+        params: {'name': '(string) The name of the location to go to.'},
+        perform: wrapExecution(async (agent, name) => {
+            const pos = agent.memory_bank.recallPlace(name);
+            if (!pos) {
+                log(agent.bot, `No location named "${name}" saved.`);
+                return;
+            }
+            await skills.teleportToPosition(agent.bot, pos[0], pos[1], pos[2], 1);
+        })
+    },
+    {
         name: '!givePlayer',
         description: 'Give the specified item to the given player.',
         params: { 
@@ -402,7 +415,7 @@ export const actionsList = [
                 log(agent.bot, `Please wait 30 seconds to use this command again.`);
             }
         })
-    },
+    },    
     {
         name: '!stripMine',
         description: 'Perform strip mining operation.',

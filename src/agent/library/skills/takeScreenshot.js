@@ -39,7 +39,8 @@ export async function takeScreenshot(bot, screenshot_name) {
         //console.log("Screenshot taken and saved to:", screenshotPath);
         
         // Log a message indicating that the screenshot has been taken and classification is starting
-        log(bot, 'Screenshot taken. Starting classification, segmentation and text extraction...');
+        //log(bot, 'Screenshot taken. Starting classification, segmentation and text extraction...');
+        log(bot, 'Screenshot taken.');
         
     } catch (error) {
         // If an error occurs during any step above, log the error message and return false
@@ -51,7 +52,7 @@ export async function takeScreenshot(bot, screenshot_name) {
         await browser.close();
     }
 
-    // Call another function to classify the screenshot using the bot and the screenshot name as parameters
+/*     // Call another function to classify the screenshot using the bot and the screenshot name as parameters
     try {
         await classifyScreenshot(bot, new_screenshot_name);
     } catch (error) {
@@ -76,7 +77,7 @@ export async function takeScreenshot(bot, screenshot_name) {
         //console.error("Failed to extract text from screenshot:", error);
         log(bot, 'Failed to extract text from screenshot.');
         return false;
-    }
+    } */
 
     // If everything goes well, return true indicating success
     return true;

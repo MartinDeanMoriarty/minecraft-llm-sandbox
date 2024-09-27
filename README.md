@@ -28,7 +28,7 @@ Again: Please go to the original repo :heart:
 
 - Supported Minecraft versions due to prismarine-viewer: 1.8.8, 1.9.4, 1.10.2, 1.11.2, 1.12.2, 1.13.2, 1.14.4, 1.15.2, 1.16.1, 1.16.4, 1.17.1, 1.18.1, 1.19, 1.20.1. Works on 1.20.4 but has some issues with textures.
 
-- Image classification and segmentation do work but without custom models the output is absolutely useless.
+- Image classification and segmentation do work but without custom models the output is absolutely useless. (TransformerTraining)[https://github.com/MartinDeanMoriarty/TransformerTraining]
 
 - image-to-text needs extra work to make it reliable.
 

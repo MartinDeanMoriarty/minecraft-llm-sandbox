@@ -672,6 +672,28 @@ export async function goToPosition(bot, x, y, z, min_distance=2) {
     return false;
 }
 
+export async function teleportToPosition(bot, x, y, z, min_distance=2) {
+    /**
+     * Navigate to the given position.
+     * @param {MinecraftBot} bot, reference to the minecraft bot.
+     * @param {number} x, the x coordinate to navigate to. If null, the bot's current x coordinate will be used.
+     * @param {number} y, the y coordinate to navigate to. If null, the bot's current y coordinate will be used.
+     * @param {number} z, the z coordinate to navigate to. If null, the bot's current z coordinate will be used.
+     * @param {number} distance, the distance to keep from the position. Defaults to 2.
+     * @returns {Promise<boolean>} true if the position was reached, false otherwise.
+     * @example
+     * let position = world.world.getNearestBlock(bot, "oak_log", 64).position;
+     * await skills.goToPosition(bot, position.x, position.y, position.x + 20);
+     **/
+    if (x == null || y == null || z == null) {
+        log(bot, `Missing coordinates, given x:${x} y:${y} z:${z}`);
+        return false;
+    }    
+        bot.chat('/tp @s ' + x + ' ' + y + ' ' + z);
+        log(bot, `Teleported to ${x}, ${y}, ${z}.`);
+        return true;   
+}
+
 function getDistanceToTarget(bot, x, y, z) {
     const botPosition = bot.entity.position;
     return Math.sqrt((x - botPosition.x) ** 2 + (y - botPosition.y) ** 2 + (z - botPosition.z) ** 2);
