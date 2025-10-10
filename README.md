@@ -4,8 +4,10 @@ This is a sandbox version of [kolbytn/mindcraft](https://github.com/kolbytn/mind
 
 
 # Warning! :see_no_evil: 
+I've come to realize while this project is realy interessting, it also wont lead to what I had in mind.
+In the meanwhile better ai models came up to do the job of playing games, but I think a well written mineflyer bot would still perform better in most tasks.
 
-I use this as a sandbox to play around with ideas and learn new things :nerd_face:
+Since I abonded my main idea, there is fortunatly no need for labor, hardware and/or cost intensive training.
 
 Go to [kolbytn/mindcraft](https://github.com/kolbytn/mindcraft). 
 It's a much better version and maintained by its authors and community :heart: 
